@@ -74,7 +74,7 @@ public class SanspoBaseballCalendarParser {
 			List<WebElement> days = week.findElements(By.xpath("th"));
 			for(int j = 0; j < days.size(); ++j) {
 				WebElement day = days.get(j);
-				System.out.println(String.format("weeks[%d][%d] : %s", i, j, day.getText()));
+//				System.out.println(String.format("weeks[%d][%d] : %s", i, j, day.getText()));
 				if(targatDay.equals(day.getText())) {
 					indexOfWeek = i;
 					indexOfDay = j;
@@ -89,13 +89,39 @@ public class SanspoBaseballCalendarParser {
 		WebElement allGamesOfDay = gamesOfWeek.get(indexOfDay);
 //		System.out.println(String.format("gamesOfDay[%d] : %s", indexOfDay, gamesOfDay.getText()));
 		List<WebElement> gamesOfDay = allGamesOfDay.findElements(By.tagName("a"));
+		
+		SanspoBaseballGameParser gameParser = new SanspoBaseballGameParser();
+		
 		for(WebElement game : gamesOfDay) {
+			
+			GameSchedule gameSchedule = gameParser.parse(game);
+			
+			parseGame(game);
 			String text = game.getText();
-			String[]  array = text.split(" ");
+			String[]  array = text.split("[ \n]", 0);
+			System.out.println(String.format("array : %s", array));
 			System.out.println(String.format("game : %s", game.getText()));
+			System.out.println(String.format("href : %s", game.getAttribute("href")));
 		}
 		
 		tearDown();
+		return true;
+	}
+	
+	private boolean parseGame(WebElement game) {
+		String href = game.getAttribute("href");
+		WebElement dt = game.findElement(By.tagName("dt"));
+		System.out.println(String.format("dt : %s", dt.getText()));
+		String[]  array = dt.getText().split(" +", 0);
+		if(array.length == 5) {
+			
+		}
+		System.out.println(String.format("array : %s", array));
+		List<WebElement> scores = dt.findElements(By.className("fin_sc"));
+		for(WebElement score : scores) {
+			System.out.println(String.format("score : %s", score.getText()));
+		}
+		WebElement dd = game.findElement(By.tagName("dd"));
 		return true;
 	}
 	
