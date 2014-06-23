@@ -2,19 +2,33 @@ package jp.momotown;
 
 public class Score {
 	
-	private int homeTeam;
-	private int visitingTeam;
+	private int top;
+	private int bottom;
 
 	public Score() {
-		// TODO 自動生成されたコンストラクター・スタブ
-	}
-	
-	public void set(int home, int visitting) {
-		homeTeam = home;
-		visitingTeam = visitting;
+		this.top = 0;
+		this.bottom = 0;
 	}
 
-	public void setHome(int home) {
-		
+	public Score(int top, int bottom) {
+		this.top = top;
+		this.bottom = bottom;
+	}
+	
+	public void set(int top, int bottom) {
+		this.top = top;
+		this.bottom = bottom;
+	}
+
+	public void setTop(int top) {
+		this.top = top;
+	}
+
+	public int getTop() {
+		return this.top;
+	}
+
+	public int getBottom() {
+		return this.bottom;
 	}
 }

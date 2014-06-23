@@ -24,7 +24,14 @@ public class SanspoBaseballGameParser {
 			return null;
 		}
 		
+		GameSchedule gameSchedule = new GameSchedule();
+		
 		try {
+			for(int i = 0; i < Constants.TEAM.length; ++i) {
+				if(Constants.TEAM[i].getShortName().contentEquals(textArray[0])) {
+					gameSchedule
+				}
+			}
 			int homeTeam = Integer.parseInt(textArray);
 //			System.out.println("year = " + year);
 			int month = Integer.parseInt(date.substring(4, 6));
