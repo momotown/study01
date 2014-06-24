@@ -1,5 +1,6 @@
 package jp.momotown;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
@@ -33,8 +34,6 @@ public class SanspoBaseballCalendarParser {
 //			System.out.println("dayOfMonth = " + dayOfMonth);
 			
 			m_calendar.set(year, month-1, dayOfMonth, 0, 0, 0);
-			
-			displayCalendar();
 		} catch(NumberFormatException e) {
 			System.out.println(e.getMessage());
 			return false;
@@ -58,14 +57,7 @@ public class SanspoBaseballCalendarParser {
 		List<WebElement> weeksOfMonth = m_webDriver.findElements(By.xpath("//table[@id='sj-SC_central03calendar']/tbody//tr[@class='date']"));
 		List<WebElement> gamesOfMonth = m_webDriver.findElements(By.xpath("//table[@id='sj-SC_central03calendar']/tbody//tr[@class='gamesSchedule']"));
 
-		/*
-		int i = 0;
-		for(WebElement date : dates) {
-			System.out.println(String.format("LIST[%d] : %s", i, date.getText()));
-			++i;
-		}
-		*/
-		
+		// 日付から行、列を決定する
 		int indexOfWeek = -1;
 		int indexOfDay = -1;
 		String targatDay = Integer.toString(m_calendar.get(Calendar.DAY_OF_MONTH));
@@ -74,7 +66,6 @@ public class SanspoBaseballCalendarParser {
 			List<WebElement> days = week.findElements(By.xpath("th"));
 			for(int j = 0; j < days.size(); ++j) {
 				WebElement day = days.get(j);
-//				System.out.println(String.format("weeks[%d][%d] : %s", i, j, day.getText()));
 				if(targatDay.equals(day.getText())) {
 					indexOfWeek = i;
 					indexOfDay = j;
@@ -83,64 +74,25 @@ public class SanspoBaseballCalendarParser {
 		}
 		
 		WebElement allGamesOfWeek = gamesOfMonth.get(indexOfWeek);
-//		System.out.println(String.format("gamesOfMonth[%d] : %s", indexOfWeek, allGamesOfWeek.getText()));
 		List<WebElement> gamesOfWeek = allGamesOfWeek.findElements(By.xpath("td"));
-//		System.out.println(String.format("gamesOfWeek : %s", gamesOfWeek.getText());
 		WebElement allGamesOfDay = gamesOfWeek.get(indexOfDay);
-//		System.out.println(String.format("gamesOfDay[%d] : %s", indexOfDay, gamesOfDay.getText()));
 		List<WebElement> gamesOfDay = allGamesOfDay.findElements(By.tagName("a"));
 		
 		SanspoBaseballGameParser gameParser = new SanspoBaseballGameParser();
 		
+		List<GameSchedule> gameSchedules = new ArrayList<GameSchedule>();
 		for(WebElement game : gamesOfDay) {
-			
-			GameSchedule gameSchedule = gameParser.parse(game);
-			
-			parseGame(game);
-			String text = game.getText();
-			String[]  array = text.split("[ \n]", 0);
-			System.out.println(String.format("array : %s", array));
-			System.out.println(String.format("game : %s", game.getText()));
-			System.out.println(String.format("href : %s", game.getAttribute("href")));
+			GameSchedule gameSchedule = gameParser.parse(m_calendar, game);
+			gameSchedule.display();
+			gameSchedules.add(gameSchedule);
 		}
 		
 		tearDown();
-		return true;
-	}
-	
-	private boolean parseGame(WebElement game) {
-		String href = game.getAttribute("href");
-		WebElement dt = game.findElement(By.tagName("dt"));
-		System.out.println(String.format("dt : %s", dt.getText()));
-		String[]  array = dt.getText().split(" +", 0);
-		if(array.length == 5) {
-			
-		}
-		System.out.println(String.format("array : %s", array));
-		List<WebElement> scores = dt.findElements(By.className("fin_sc"));
-		for(WebElement score : scores) {
-			System.out.println(String.format("score : %s", score.getText()));
-		}
-		WebElement dd = game.findElement(By.tagName("dd"));
+		
 		return true;
 	}
 	
 	private void tearDown() {
 		m_webDriver.quit();
-	}
-	
-	private void displayCalendar() {
-		int year = m_calendar.get(Calendar.YEAR);
-	    int month = m_calendar.get(Calendar.MONTH) + 1;
-	    int day = m_calendar.get(Calendar.DATE);
-	    int hour = m_calendar.get(Calendar.HOUR_OF_DAY);
-	    int minute = m_calendar.get(Calendar.MINUTE);
-	    int second = m_calendar.get(Calendar.SECOND);
-	    String weekDisplayName = m_calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.JAPAN);
-
-	    System.out.println("設定されている日時は");
-	    System.out.println(year + "年" + month + "月" + day + "日");
-	    System.out.println("(" + weekDisplayName + ")");
-	    System.out.println(hour + "時" + minute + "分" + second + "秒");
 	}
 }
