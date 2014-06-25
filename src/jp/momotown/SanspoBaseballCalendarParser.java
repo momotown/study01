@@ -45,15 +45,6 @@ public class SanspoBaseballCalendarParser {
 		m_webDriver.findElement(By.linkText("日程・結果")).click();
 		m_webDriver.findElement(By.linkText((m_calendar.get(Calendar.MONTH) + 1) + "月")).click();
 		
-		/*
- * //table[@id='sj-SC_central03calendar']/tbody/tr[1]		// 列ヘッダだな
- * //table[@id='sj-SC_central03calendar']/tbody/tr[2]/th[1]	// 1週目の日曜日の日
- * //table[@id='sj-SC_central03calendar']/tbody/tr[2]/th[2]	// 1週目の月曜日の日
- * //table[@id='sj-SC_central03calendar']/tbody/tr[2]/th[3]	// 1週目の火曜日の日
- * //table[@id='sj-SC_central03calendar']/tbody/tr[2]/th[4]	// 1週目の水曜日の日
- * //table[@id='sj-SC_central03calendar']/tbody/tr[3]		// 1週目の内容
-*/
-		
 		List<WebElement> weeksOfMonth = m_webDriver.findElements(By.xpath("//table[@id='sj-SC_central03calendar']/tbody//tr[@class='date']"));
 		List<WebElement> gamesOfMonth = m_webDriver.findElements(By.xpath("//table[@id='sj-SC_central03calendar']/tbody//tr[@class='gamesSchedule']"));
 
