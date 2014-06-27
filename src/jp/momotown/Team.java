@@ -2,6 +2,8 @@ package jp.momotown;
 
 public final class Team {
 	
+	enum
+	
 	private final String longName;
 	private final String shortName;
 	private final String field;

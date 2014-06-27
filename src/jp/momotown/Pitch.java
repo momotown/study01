@@ -6,6 +6,8 @@ public class Pitch {
 //		private Team team;
 //		private List<Player> playerList;
 	
+	private BattingOrder[] battingOrder = new BattingOrder[InningStatus.Num];
+	
 	private String Pitcher; // 投手、球数、今期成績
 	private String Catcher; // 捕手
 //	Private Conditions conditions;　// 1回表、BSO、ランナー
