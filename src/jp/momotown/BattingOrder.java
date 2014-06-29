@@ -7,9 +7,12 @@ public class BattingOrder {
 	private Team team;
 	private ArrayList<Player> playerList;
 
-	public BattingOrder(Team team) {
-		this.team = team;
+	public BattingOrder() {
 		this.playerList = new ArrayList<Player>();
+	}
+	
+	public void setTeam(Team team) {
+		this.team = team;
 	}
 	
 	public Team getTeam() {

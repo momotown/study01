@@ -2,11 +2,8 @@ package jp.momotown;
 
 public class Pitch {
 	
-//	こういうクラスを作るか？
-//		private Team team;
-//		private List<Player> playerList;
+	private BattingOrder[] battingOrder = new BattingOrder[2];
 	
-	private BattingOrder[] battingOrder = new BattingOrder[InningStatus.Num.ordinal()];
 	
 	private String Pitcher; // 投手、球数、今期成績
 	private String Catcher; // 捕手
@@ -21,6 +18,10 @@ public class Pitch {
 
 	public Pitch() {
 		// TODO 自動生成されたコンストラクター・スタブ
+		InningStatus status = InningStatus.Bottom;
+		switch(status) {
+		case Top:
+		}
 	}
 
 }

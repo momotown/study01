@@ -39,6 +39,10 @@ public class GameSchedule {
 	public void setDetailLink(String link) {
 		this.detailLink = link;
 	}
+	
+	public String getDetailLink() {
+		return this.detailLink;
+	}
 
 	public void display() {
 		displayCalendar();

@@ -10,12 +10,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class SanspoBaseballCalendarParser {
+public class ScheduleParser {
 	private Calendar m_calendar;
 	private WebDriver m_webDriver;
 	private String m_baseUrl;
 
-	public SanspoBaseballCalendarParser() {
+	public ScheduleParser() {
 		m_calendar = Calendar.getInstance();
 	}
 
@@ -24,7 +24,7 @@ public class SanspoBaseballCalendarParser {
 		m_baseUrl = "http://www.sanspo.com/baseball/baseball.html";
 	}
 	
-	public boolean parse(String date) {
+	public List<GameSchedule> parse(String date) {
 		try {
 			int year = Integer.parseInt(date.substring(0, 4));
 //			System.out.println("year = " + year);
@@ -80,7 +80,7 @@ public class SanspoBaseballCalendarParser {
 		
 		tearDown();
 		
-		return true;
+		return gameSchedules;
 	}
 	
 	private void tearDown() {

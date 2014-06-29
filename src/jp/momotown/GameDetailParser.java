@@ -7,12 +7,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class SanspoBaseballGameDetailParser {
+public class GameDetailParser {
 
 	private WebDriver webDriver;
 	private String baseUrl;
 	
-	public SanspoBaseballGameDetailParser(String url) {
+	public GameDetailParser(String url) {
 		// TODO 自動生成されたコンストラクター・スタブ
 		baseUrl = url;
 	}
