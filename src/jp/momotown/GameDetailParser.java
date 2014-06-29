@@ -25,7 +25,13 @@ public class GameDetailParser {
 		setUp();
 		
 		webDriver.get(baseUrl);
-		List<WebElement> battingOrderList = webDriver.findElements(By.xpath(""));
+		WebElement battingOrderBlock = webDriver.findElement(By.xpath("//div[@id='playerListIndex']"));
+//		System.out.println(battingOrderBlock.getText());
+		
+		List<WebElement> battingOrderList = battingOrderBlock.findElements(By.xpath("table[@class='data-view']"));
+		for(WebElement battingOrder : battingOrderList) {
+			System.out.println(battingOrder.getText());
+		}
 
 		tearDown();
 	}

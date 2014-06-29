@@ -36,7 +36,7 @@ public class ScheduleParser {
 			m_calendar.set(year, month-1, dayOfMonth, 0, 0, 0);
 		} catch(NumberFormatException e) {
 			System.out.println(e.getMessage());
-			return false;
+			return null;
 		}
 		
 		setUp();

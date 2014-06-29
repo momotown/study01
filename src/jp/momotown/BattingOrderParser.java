@@ -9,6 +9,7 @@ public class BattingOrderParser {
 	}
 
 	public BattingOrder parse(WebElement element) {
+		// チーム
 		String s = "a";
 		BattingOrder battingOrder = new BattingOrder();
 		for(int i = 0; i < Constants.TEAM.length; ++i) {
