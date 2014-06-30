@@ -6,6 +6,14 @@ public final class Team {
 	private final String shortName;
 	private final String field;
 	private final League league;
+	
+	public Team() {
+		
+		this.longName = "";
+		this.shortName = "";
+		this.field = "";
+		this.league = League.UNKNOWN;
+	}
 
 	public Team(String longName, String shortName, String field, League league) {
 

@@ -6,8 +6,8 @@ public class SanspoBaseballScraping {
 	public static void main(String[] args) {
 		String date = "20140328";
 		
-		ScheduleParser parser = new ScheduleParser();
-		List<GameSchedule> gameSchedules = parser.parse(date);
+		ScheduleParser scheduleParser = new ScheduleParser();
+		List<GameSchedule> gameSchedules = scheduleParser.parse(date);
 		for(GameSchedule gameSchedule : gameSchedules) {
 			String url = gameSchedule.getDetailLink();
 			System.out.println(url);

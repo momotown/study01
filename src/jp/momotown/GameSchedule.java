@@ -14,6 +14,12 @@ public class GameSchedule {
 
 	public GameSchedule() {
 		// TODO 自動生成されたコンストラクター・スタブ
+		this.calendar = Calendar.getInstance();
+		this.homeTeam = new Team();
+		this.visitingTeam = new Team();
+		this.field = "";
+		this.score = new Score();
+		this.detailLink = "";
 	}
 	
 	public void setCalendar(Calendar calendar) {
