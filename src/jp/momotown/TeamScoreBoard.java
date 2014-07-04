@@ -1,12 +1,13 @@
 package jp.momotown;
 
+import java.util.List;
 import java.util.ArrayList;
 
 // スコアボードの上下半分を担当する
 public class TeamScoreBoard {
 	
 	Team team;
-	ArrayList<InningScore> inningScoreList;
+	List<InningScore> inningScoreList;
 	int runs;
 	int hits;
 	int errors;

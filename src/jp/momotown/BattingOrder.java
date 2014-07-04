@@ -1,11 +1,12 @@
 package jp.momotown;
 
+import java.util.List;
 import java.util.ArrayList;
 
 public class BattingOrder {
 	
 	private Team team;
-	private ArrayList<Player> playerList;
+	private List<Player> playerList;
 
 	public BattingOrder() {
 		this.playerList = new ArrayList<Player>();
