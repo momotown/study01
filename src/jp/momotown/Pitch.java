@@ -5,8 +5,8 @@ public class Pitch {
 	private BattingOrder[] battingOrder = new BattingOrder[2];
 	
 	
-	private String Pitcher; // 投手、球数、今期成績
-	private String Catcher; // 捕手
+	private Pitcher pitcher; // 投手
+	private Catcher catcher; // 捕手
 //	Private Conditions conditions;　// 1回表、BSO、ランナー
 //	Private　PitchingBall pitchingBall; // 球数、結果、球種、球速
 	private String Batter; // 打者、本日、今季成績

@@ -2,7 +2,7 @@ package jp.momotown;
 
 public enum InningStatus {
 	Top("表"),
-	Bottom("裏");;
+	Bottom("裏");
 	
 	private String name;
 	
