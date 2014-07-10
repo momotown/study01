@@ -4,12 +4,12 @@ import java.util.EnumSet;
 
 public class Conditions {
 	
-	public int inning;
-	public InningStatus inningStatus;
-	public int balls;
-	public int strikes;
-	public int outs;
-	public boolean[] runners;
+	public int inning;					// イニング
+	public InningStatus inningStatus;	// 表/裏
+	public int balls;					// ボールカウント
+	public int strikes;					// ストライクカウント
+	public int outs;					// アウトカウント
+	public boolean[] runners;			// ランナー
 
 	public Conditions() {
 		// TODO 自動生成されたコンストラクター・スタブ
