@@ -3,6 +3,8 @@ package jp.momotown;
 import java.util.List;
 import java.util.ArrayList;
 
+import jp.momotown.table.Team;
+
 // スコアボードの上下半分を担当する
 public class TeamScoreBoard {
 	

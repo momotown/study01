@@ -3,6 +3,8 @@ package jp.momotown;
 import java.util.Calendar;
 import java.util.Locale;
 
+import jp.momotown.table.Team;
+
 public class GameSchedule {
 	
 	private Calendar calendar;
