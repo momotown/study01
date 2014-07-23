@@ -8,16 +8,30 @@ public class TeamTable {
 	protected List<Team> teamList;
 
 	public TeamTable() {
+
 		this.teamList = new ArrayList<Team>();
 	}
 
 	public void add(Team team) {
+
 		this.teamList.add(team);
 	}
 	
 	public Team getTeamByID(int id) {
+
 		for(Team team : teamList) {
 			if(id == team.id) {
+				return team;
+			}
+		}
+		
+		return null;
+	}
+	
+	public Team getTeamByNameS(String nameS) {
+
+		for(Team team : teamList) {
+			if(team.nameS.contains(nameS)) {
 				return team;
 			}
 		}

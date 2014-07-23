@@ -17,8 +17,6 @@ public class GameSchedule {
 	public GameSchedule() {
 		// TODO 自動生成されたコンストラクター・スタブ
 		this.calendar = Calendar.getInstance();
-		this.homeTeam = new Team();
-		this.visitingTeam = new Team();
 		this.field = "";
 		this.score = new Score();
 		this.detailLink = "";
@@ -55,10 +53,10 @@ public class GameSchedule {
 	public void display() {
 		displayCalendar();
 		System.out.println(String.format("%s %d - %d %s",
-				this.homeTeam.getShortName(),
+				this.homeTeam.nameS,
 				this.score.getBottom(),
 				this.score.getTop(),
-				this.visitingTeam.getShortName()));
+				this.visitingTeam.nameS));
 		System.out.println(this.field);
 		System.out.println(this.detailLink);
 	}

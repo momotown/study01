@@ -28,22 +28,24 @@ public class GameScheduleParser {
 		
 		try {
 			// ホーム
-			for(int i = 0; i < Constants.TEAM.length; ++i) {
-				if(Constants.TEAM[i].getShortName().contentEquals(textArray[0])) {
-					gameSchedule.setHomeTeam(Constants.TEAM[i]);
-					break;
-				}
-			}
+//			for(int i = 0; i < Constants.TEAM.length; ++i) {
+//				if(Constants.TEAM[i].getShortName().contentEquals(textArray[0])) {
+//					gameSchedule.setHomeTeam(Constants.TEAM[i]);
+//					break;
+//				}
+//			}
+			gameSchedule.setHomeTeam(Constants.TEAM_TBL.getTeamByNameS(textArray[0]));
 			// スコア
 			Score score = new Score(Integer.parseInt(textArray[3]), Integer.parseInt(textArray[1]));
 			// ビジター
 			gameSchedule.setScore(score);
-			for(int i = 0; i < Constants.TEAM.length; ++i) {
-				if(Constants.TEAM[i].getShortName().contentEquals(textArray[4])) {
-					gameSchedule.setVisitingTeam(Constants.TEAM[i]);
-					break;
-				}
-			}
+//			for(int i = 0; i < Constants.TEAM.length; ++i) {
+//				if(Constants.TEAM[i].getShortName().contentEquals(textArray[4])) {
+//					gameSchedule.setVisitingTeam(Constants.TEAM[i]);
+//					break;
+//				}
+//			}
+			gameSchedule.setVisitingTeam(Constants.TEAM_TBL.getTeamByNameS(textArray[4]));
 //			int homeTeam = Integer.parseInt(textArray);
 //			System.out.println("year = " + year);
 //			int month = Integer.parseInt(date.substring(4, 6));
