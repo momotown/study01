@@ -41,5 +41,13 @@
 	<classpathentry kind="lib" path="E:/Applications/eclipse/dropins/selenium-2.42.2/libs/xalan-2.7.1.jar"/>
 	<classpathentry kind="lib" path="E:/Applications/eclipse/dropins/selenium-2.42.2/libs/xercesImpl-2.11.0.jar"/>
 	<classpathentry kind="lib" path="E:/Applications/eclipse/dropins/selenium-2.42.2/libs/xml-apis-1.4.01.jar"/>
+	<classpathentry kind="lib" path="visualization-datasource/lib/commons-lang-2.4.jar"/>
+	<classpathentry kind="lib" path="visualization-datasource/lib/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="visualization-datasource/lib/guava-r07.jar"/>
+	<classpathentry kind="lib" path="visualization-datasource/lib/icu4j-4_0_1.jar"/>
+	<classpathentry kind="lib" path="visualization-datasource/lib/opencsv-1.8.jar"/>
+	<classpathentry kind="lib" path="visualization-datasource/visualization-datasource-1.1.1-src.jar"/>
+	<classpathentry kind="lib" path="visualization-datasource/visualization-datasource-1.1.1.jar" sourcepath="visualization-datasource/visualization-datasource-1.1.1-src.jar"/>
+	<classpathentry kind="lib" path="visualization-datasource/visualization-datasource-examples.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
