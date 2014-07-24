@@ -8,9 +8,11 @@ import com.google.visualization.datasource.datatable.ColumnDescription;
 import com.google.visualization.datasource.datatable.DataTable;
 import com.google.visualization.datasource.datatable.value.ValueType;
 
-public class TeamDataTable extends DataTable {
+public final class TeamDataTable extends DataTable {
 
-	public TeamDataTable() {
+	private static final TeamDataTable instance = new TeamDataTable();
+
+  private TeamDataTable() {
 		List<ColumnDescription> cd = new ArrayList<ColumnDescription>();
 		cd.add(new ColumnDescription("id",			ValueType.NUMBER,	"ID"));
 		cd.add(new ColumnDescription("nameS",		ValueType.TEXT,			"名称"));
@@ -71,4 +73,7 @@ public class TeamDataTable extends DataTable {
 		}
 	}
 
+  public static TeamDataTable getInstance() {
+  	return instance;
+  }
 }
