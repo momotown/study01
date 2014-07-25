@@ -13,7 +13,6 @@ public final class TeamDataTable extends DataTable {
 	private static final TeamDataTable instance = new TeamDataTable();
 
   private TeamDataTable() {
-
   	List<ColumnDescription> cd = new ArrayList<ColumnDescription>();
 		cd.add(new ColumnDescription("id",			ValueType.NUMBER,	"ID"));
 		cd.add(new ColumnDescription("nameS",		ValueType.TEXT,			"名称"));
