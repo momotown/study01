@@ -14,8 +14,8 @@ public class FirstCatchDataTable extends DataTable {
 
 	public FirstCatchDataTable() {
   	List<ColumnDescription> cd = new ArrayList<ColumnDescription>();
-		cd.add(new ColumnDescription("id",			ValueType.NUMBER,	"ID"));
-		cd.add(new ColumnDescription("name",		ValueType.TEXT,			"名称"));
+		cd.add(new ColumnDescription("id",		ValueType.NUMBER,	"ID"));
+		cd.add(new ColumnDescription("name",	ValueType.TEXT,		"名称"));
 		
 		addColumns(cd);
 		

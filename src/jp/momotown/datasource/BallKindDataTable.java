@@ -15,7 +15,7 @@ public class BallKindDataTable extends DataTable {
 	public BallKindDataTable() {
   	List<ColumnDescription> cd = new ArrayList<ColumnDescription>();
 		cd.add(new ColumnDescription("id",			ValueType.NUMBER,	"ID"));
-		cd.add(new ColumnDescription("name",		ValueType.TEXT,			"名称"));
+		cd.add(new ColumnDescription("name",		ValueType.TEXT,		"名称"));
 		
 		addColumns(cd);
 		
@@ -37,7 +37,7 @@ public class BallKindDataTable extends DataTable {
 	}
 
 	public static BallKindDataTable getInstance() {
-  	return instance;
+		return instance;
   }
 
 }
