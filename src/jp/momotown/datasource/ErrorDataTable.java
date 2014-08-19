@@ -26,7 +26,7 @@ public class ErrorDataTable extends DataTable {
 			addRowFromValues(3,		"TUNNEL");
 			addRowFromValues(4,		"THROUGH");
 			addRowFromValues(5,		"FC");
-			addRowFromValues(9,		"捕球ﾐｽ
+			addRowFromValues(9,		"捕球ﾐｽ");
 			addRowFromValues(10,	"送球ﾐｽ");
 			addRowFromValues(12,	"落球");
 			addRowFromValues(13,	"悪送球");

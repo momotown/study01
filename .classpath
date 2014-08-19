@@ -32,7 +32,6 @@
 	<classpathentry kind="lib" path="selenium-2.42.2/libs/junit-dep-4.11.jar"/>
 	<classpathentry kind="lib" path="selenium-2.42.2/libs/nekohtml-1.9.20.jar"/>
 	<classpathentry kind="lib" path="selenium-2.42.2/libs/netty-3.5.7.Final.jar"/>
-	<classpathentry kind="lib" path="selenium-2.42.2/libs/new-fxml-settings.xml"/>
 	<classpathentry kind="lib" path="selenium-2.42.2/libs/operadriver-1.5.jar"/>
 	<classpathentry kind="lib" path="selenium-2.42.2/libs/phantomjsdriver-1.1.0.jar"/>
 	<classpathentry kind="lib" path="selenium-2.42.2/libs/protobuf-java-2.4.1.jar"/>

@@ -1,64 +1,69 @@
-package jp.momotown;
+package jp.momotown.data;
 
 import java.util.Calendar;
 import java.util.Locale;
 
-import jp.momotown.table.Team;
+public class GameScheduleData {
 
-public class GameSchedule {
-	
 	private Calendar calendar;
-	private Team homeTeam;
-	private Team visitingTeam;
-	private String field;
-	private Score score;
-	private String detailLink;
+	private String homeTeam;
+	private String visitingTeam;
+	private String stadium;
+	private int homeTeamScore;
+	private int visitingTeamScore;
+	private String link;
 
-	public GameSchedule() {
-		// TODO 自動生成されたコンストラクター・スタブ
+	public GameScheduleData() {
 		this.calendar = Calendar.getInstance();
-		this.field = "";
-		this.score = new Score();
-		this.detailLink = "";
+		this.homeTeam ="";
+		this.visitingTeam = "";
+		this.stadium = "";
+		this.homeTeamScore = 0;
+		this.visitingTeamScore = 0;
+		this.link = "";
 	}
 	
 	public void setCalendar(Calendar calendar) {
 		this.calendar = calendar;
 	}
 	
-	public void setHomeTeam(Team team) {
+	public void setHomeTeam(String team) {
 		this.homeTeam = team;
 	}
 	
-	public void setVisitingTeam(Team team) {
+	public void setVisitingTeam(String team) {
 		this.visitingTeam = team;
 	}
 	
-	public void setField(String field) {
-		this.field = field;
+	public void setStadium(String stadium) {
+		this.stadium = stadium;
 	}
 	
-	public void setScore(Score score) {
-		this.score = score;
+	public void setHomeTeamScore(int score) {
+		this.homeTeamScore = score;
 	}
 	
-	public void setDetailLink(String link) {
-		this.detailLink = link;
+	public void setVisitingTeamScore(int score) {
+		this.visitingTeamScore = score;
 	}
 	
-	public String getDetailLink() {
-		return this.detailLink;
+	public void setLink(String link) {
+		this.link = link;
+	}
+	
+	public String getLink() {
+		return this.link;
 	}
 
 	public void display() {
 		displayCalendar();
 		System.out.println(String.format("%s %d - %d %s",
-				this.homeTeam.nameS,
-				this.score.getBottom(),
-				this.score.getTop(),
-				this.visitingTeam.nameS));
-		System.out.println(this.field);
-		System.out.println(this.detailLink);
+				this.homeTeam,
+				this.homeTeamScore,
+				this.visitingTeamScore,
+				this.visitingTeam));
+		System.out.println(this.stadium);
+		System.out.println(this.link);
 	}
 	
 	private void displayCalendar() {
@@ -79,4 +84,5 @@ public class GameSchedule {
 	    		minute,
 	    		second));
 	}
+
 }

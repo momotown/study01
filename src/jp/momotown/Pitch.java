@@ -2,9 +2,6 @@ package jp.momotown;
 
 public class Pitch {
 	
-	private BattingOrder[] battingOrder = new BattingOrder[2];
-	
-	
 	private Pitcher pitcher; 			// 投手
 	private Catcher catcher;			// 捕手
 	private Conditions conditions;		// 1回表、BSO、ランナー
