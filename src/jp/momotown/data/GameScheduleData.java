@@ -5,13 +5,13 @@ import java.util.Locale;
 
 public class GameScheduleData {
 
-	private Calendar calendar;
-	private String homeTeam;
-	private String visitingTeam;
-	private String stadium;
-	private int homeTeamScore;
-	private int visitingTeamScore;
-	private String link;
+	private Calendar calendar;				// 日付
+	private String homeTeam;					// ホームチーム
+	private String visitingTeam;			// ビジターチーム
+	private String stadium;					// スタジアム
+	private int homeTeamScore;				// ホームチームスコア
+	private int visitingTeamScore;		// ビジターチームスコア
+	private String link;							// ゲーム詳細リンク
 
 	public GameScheduleData() {
 		this.calendar = Calendar.getInstance();

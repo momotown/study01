@@ -25,6 +25,20 @@ public class GameDetailParser {
 		setUp();
 		
 		webDriver.get(baseUrl);
+		
+		
+		WebElement scoreboard = webDriver.findElement(By.cssSelector("div.scoreboardArea"));
+
+		
+		
+		
+		WebElement playerListIndex = webDriver.findElement(By.cssSelector("div#playerListIndex"));
+		List<WebElement> playerLists = playerListIndex.findElements(By.cssSelector("table.data-view"));
+		
+		
+		
+		WebElement batterBoxLive = webDriver.findElement(By.cssSelector("div#batterBoxLive"));
+		
 //		WebElement battingOrderBlock = webDriver.findElement(By.xpath("//div[@id='playerListIndex']"));
 //		System.out.println(battingOrderBlock.getText());
 		List<WebElement> battingOrderList= webDriver.findElements(By.xpath("//div[@id='playerListIndex']//table[@class='data-view']"));
