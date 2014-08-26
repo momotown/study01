@@ -14,4 +14,10 @@ public class InningScoreData {
 		this.score = score;
 		this.link = link;
 	}
+	
+	public void display() {
+		System.out.println(String.format("%d : %s",
+				this.score,
+				this.link));
+	}
 }

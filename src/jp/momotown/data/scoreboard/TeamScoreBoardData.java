@@ -21,4 +21,11 @@ public class TeamScoreBoardData {
 		this.inningScoreDataList.add(ininngScore);
 	}
 	
+	public void display() {
+		for(int i = 0; i < inningScoreDataList.size(); ++i) {
+			System.out.println(String.format("inning %d", i));
+			inningScoreDataList.get(i).display();
+		}
+	}
+
 }

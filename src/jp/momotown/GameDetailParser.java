@@ -2,6 +2,8 @@ package jp.momotown;
 
 import java.util.List;
 
+import jp.momotown.data.scoreboard.ScoreBoardData;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -27,17 +29,22 @@ public class GameDetailParser {
 		webDriver.get(baseUrl);
 		
 		
-		WebElement scoreboard = webDriver.findElement(By.cssSelector("div.scoreboardArea"));
+		WebElement elemant = webDriver.findElement(By.cssSelector("div.scoreboardArea"));
+		
+		
+		ScoreBoardParser scoreBoardParser = new ScoreBoardParser(elemant);
+		ScoreBoardData scoreBoardData = scoreBoardParser.parse();
+		scoreBoardData.display();
 
 		
 		
 		
-		WebElement playerListIndex = webDriver.findElement(By.cssSelector("div#playerListIndex"));
-		List<WebElement> playerLists = playerListIndex.findElements(By.cssSelector("table.data-view"));
+		elemant = webDriver.findElement(By.cssSelector("div#playerListIndex"));
+//		List<WebElement> playerLists = playerListIndex.findElements(By.cssSelector("table.data-view"));
 		
 		
 		
-		WebElement batterBoxLive = webDriver.findElement(By.cssSelector("div#batterBoxLive"));
+		elemant = webDriver.findElement(By.cssSelector("div#batterBoxLive"));
 		
 //		WebElement battingOrderBlock = webDriver.findElement(By.xpath("//div[@id='playerListIndex']"));
 //		System.out.println(battingOrderBlock.getText());

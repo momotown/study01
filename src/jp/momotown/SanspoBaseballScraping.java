@@ -6,7 +6,7 @@ import jp.momotown.data.GameScheduleData;
 
 public class SanspoBaseballScraping {
 	public static void main(String[] args) {
-		String date = "20140817";
+		String date = "20140824";
 
 		GameScheduleParser gameScheduleParser = new GameScheduleParser();
 		List<GameScheduleData> gameschedules = gameScheduleParser.parse(date);
@@ -16,5 +16,9 @@ public class SanspoBaseballScraping {
 //			GameDetailParser gameDetailParser = new GameDetailParser(link);
 //			gameDetailParser.parse();
 		}
+		
+		String link = gameschedules.get(0).getLink();
+		GameDetailParser gameDetailParser = new GameDetailParser(link);
+		gameDetailParser.parse();
 	}
 }
