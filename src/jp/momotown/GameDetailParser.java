@@ -32,6 +32,7 @@ public class GameDetailParser {
 		WebElement elemant = webDriver.findElement(By.cssSelector("div.scoreboardArea"));
 		
 		
+		// スコアボード
 		ScoreBoardParser scoreBoardParser = new ScoreBoardParser(elemant);
 		ScoreBoardData scoreBoardData = scoreBoardParser.parse();
 		scoreBoardData.display();
