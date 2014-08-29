@@ -2,6 +2,7 @@ package jp.momotown;
 
 import java.util.List;
 
+import jp.momotown.data.playerlist.PlayerListData;
 import jp.momotown.data.scoreboard.ScoreBoardData;
 
 import org.openqa.selenium.By;
@@ -24,35 +25,31 @@ public class GameDetailParser {
 	}
 
 	public void parse() {
+
 		setUp();
 		
 		webDriver.get(baseUrl);
 		
-		
-		WebElement elemant = webDriver.findElement(By.cssSelector("div.scoreboardArea"));
-		
-		
 		// スコアボード
-		ScoreBoardParser scoreBoardParser = new ScoreBoardParser(elemant);
+		WebElement element = webDriver.findElement(By.cssSelector("div.scoreboardArea"));
+		ScoreBoardParser scoreBoardParser = new ScoreBoardParser(element);
 		ScoreBoardData scoreBoardData = scoreBoardParser.parse();
 		scoreBoardData.display();
-
 		
+		// プレイヤーリスト
+		element = webDriver.findElement(By.cssSelector("div#playerListIndex"));
+		PlayerListParser playerListParser = new PlayerListParser(element);
+		PlayerListData playerListData = playerListParser.parse();
+		playerListData.display();
 		
-		
-		elemant = webDriver.findElement(By.cssSelector("div#playerListIndex"));
-//		List<WebElement> playerLists = playerListIndex.findElements(By.cssSelector("table.data-view"));
-		
-		
-		
-		elemant = webDriver.findElement(By.cssSelector("div#batterBoxLive"));
+		element = webDriver.findElement(By.cssSelector("div#batterBoxLive"));
 		
 //		WebElement battingOrderBlock = webDriver.findElement(By.xpath("//div[@id='playerListIndex']"));
 //		System.out.println(battingOrderBlock.getText());
-		List<WebElement> battingOrderList= webDriver.findElements(By.xpath("//div[@id='playerListIndex']//table[@class='data-view']"));
-		for(WebElement battingOrder : battingOrderList) {
-			System.out.println(battingOrder.getText());
-		}
+//		List<WebElement> battingOrderList= webDriver.findElements(By.xpath("//div[@id='playerListIndex']//table[@class='data-view']"));
+//		for(WebElement battingOrder : battingOrderList) {
+//			System.out.println(battingOrder.getText());
+//		}
 		
 		tearDown();
 	}

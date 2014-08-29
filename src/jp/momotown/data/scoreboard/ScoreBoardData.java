@@ -1,26 +1,21 @@
 package jp.momotown.data.scoreboard;
 
+import jp.momotown.data.TopBottom;
+
 
 public class ScoreBoardData {
 	
-	public TeamScoreBoardData[] teamScoreBoardDataList = new TeamScoreBoardData[2];
+	public final TeamScoreBoardData[] teamScoreBoardDataList= new TeamScoreBoardData[TopBottom.NUM];
 
 	public ScoreBoardData() {
-		teamScoreBoardDataList = new TeamScoreBoardData[2];
 	}
 	
-	public TeamScoreBoardData getTeamScoreBoardData(int index) {
-		if(index >= teamScoreBoardDataList.length) {
-			return null;
-		}
-		return teamScoreBoardDataList[index];
+	public TeamScoreBoardData getTeamScoreBoardData(TopBottom tb) {
+		return teamScoreBoardDataList[tb.getId()];
 	}
 	
-	public void setTeamScoreBoardData(int index, TeamScoreBoardData data) {
-		if(index >= teamScoreBoardDataList.length) {
-			return;
-		}
-		teamScoreBoardDataList[index] = data;
+	public void setTeamScoreBoardData(TopBottom tb, TeamScoreBoardData data) {
+		teamScoreBoardDataList[tb.getId()] = data;
 	}
 	
 	public void display() {

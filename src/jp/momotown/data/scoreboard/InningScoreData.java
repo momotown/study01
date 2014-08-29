@@ -16,7 +16,7 @@ public class InningScoreData {
 	}
 	
 	public void display() {
-		System.out.println(String.format("%d : %s",
+		System.out.println(String.format("%d -> %s",
 				this.score,
 				this.link));
 	}
