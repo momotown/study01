@@ -2,8 +2,16 @@ package jp.momotown.data.batterbox;
 
 public class CatcherData {
 
-	public CatcherData() {
-		// TODO 自動生成されたコンストラクター・スタブ
+	public String name;
+
+	public CatcherData(String name) {
+
+		this.name = name;
+	}
+	
+	public void display() {
+		
+		System.out.println(name);
 	}
 
 }

@@ -43,6 +43,8 @@ public class GameDetailParser {
 		playerListData.display();
 		
 		element = webDriver.findElement(By.cssSelector("div#batterBoxLive"));
+		BatterBoxLiveParser batterBoxLiveParser = new BatterBoxLiveParser(element);
+		batterBoxLiveParser.parse();
 		
 //		WebElement battingOrderBlock = webDriver.findElement(By.xpath("//div[@id='playerListIndex']"));
 //		System.out.println(battingOrderBlock.getText());
