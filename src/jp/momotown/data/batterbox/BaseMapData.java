@@ -13,13 +13,19 @@ public class BaseMapData {
 	public void display() {
 		
 		for(int i = 0; i < Base.NUM; ++i) {
+			Base base = Base.valuesOf(i);
 			
+			String value = "無し";
 			if(runners[i]) {
-				System.out.println("○");
-			} else {
-				System.out.println("×");
+				value = "有り";
 			}
+			
+			System.out.println(String.format("%s : %s", base.getName(), value));
 		}
+	}
+	
+	public void setRunner(Base base) {
+		runners[base.getId()] = true;
 	}
 
 }

@@ -12,5 +12,30 @@ public class BatterBoxLiveData {
 	public BatterBoxLiveData() {
 		// TODO 自動生成されたコンストラクター・スタブ
 	}
+	
+	public void setPitcherData(PitcherData data) {
+		pitcherData = data;
+	}
+	
+	public void setCatcherData(CatcherData data) {
+		catcherData = data;
+	}
+	
+	public void setConditionData(ConditionData data) {
+		conditionData = data;
+	}
+	
+	public void setPitchingBallData(PitchingBallData data) {
+
+		pitchingBallData = data;
+	}
+	
+	public void display() {
+		
+		pitcherData.display();
+		catcherData.display();
+		conditionData.display();
+		pitchingBallData.display();
+	}
 
 }

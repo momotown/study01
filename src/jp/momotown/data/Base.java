@@ -20,8 +20,19 @@ public enum Base {
 		return id;
 	}
 	
-	public int getName() {
+	public String getName() {
 		return name;
+	}
+	
+	public static Base valuesOf(int id) {
+		
+		for(Base value : values()) {
+			if(value.getId() == id) {
+				return value;
+			}
+		}
+		
+		throw new IllegalArgumentException("no such enum object for the id: " + id);
 	}
 
 }

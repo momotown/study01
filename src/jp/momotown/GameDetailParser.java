@@ -2,6 +2,7 @@ package jp.momotown;
 
 import java.util.List;
 
+import jp.momotown.data.batterbox.BatterBoxLiveData;
 import jp.momotown.data.playerlist.PlayerListData;
 import jp.momotown.data.scoreboard.ScoreBoardData;
 
@@ -44,7 +45,8 @@ public class GameDetailParser {
 		
 		element = webDriver.findElement(By.cssSelector("div#batterBoxLive"));
 		BatterBoxLiveParser batterBoxLiveParser = new BatterBoxLiveParser(element);
-		batterBoxLiveParser.parse();
+		BatterBoxLiveData batterBoxLiveData = batterBoxLiveParser.parse();
+		batterBoxLiveData.display();
 		
 //		WebElement battingOrderBlock = webDriver.findElement(By.xpath("//div[@id='playerListIndex']"));
 //		System.out.println(battingOrderBlock.getText());

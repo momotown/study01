@@ -8,13 +8,6 @@ public class ConditionData {
 	public InningScoreData inningScoreData;
 	public BaseMapData baseMapData;
 	
-	public int inningNo;
-	public InningStatus inningStatus;
-	public int balls;
-	public int strikes;
-	public int outs;
-	public boolean[] runners = new boolean[Base.NUM];
-
 	public ConditionData() {
 	}
 	
