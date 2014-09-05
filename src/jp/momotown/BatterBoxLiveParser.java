@@ -43,26 +43,53 @@ public class BatterBoxLiveParser {
 		WebElement subElement = baseElement.findElement(By.cssSelector("div.col01"));
 		
 		// 投手
-		WebElement element = subElement.findElement(By.cssSelector("table#pitcherTbl.data-view"));
-		PitcherData pitcharData = parsePitcher(element);
+		WebElement pitcherElement = subElement.findElement(By.cssSelector("table#pitcherTbl.data-view"));
+		PitcherData pitcharData = parsePitcher(pitcherElement);
 		batterBoxLive.setPitcherData(pitcharData);
 		
 		// 捕手
-		element = subElement.findElement(By.cssSelector("table#catcherTbl.data-view"));
-		CatcherData catcherData = parseCatcher(element);
+		WebElement catcherElement = subElement.findElement(By.cssSelector("table#catcherTbl.data-view"));
+		CatcherData catcherData = parseCatcher(catcherElement);
 		batterBoxLive.setCatcherData(catcherData);
 		
 		// 状態
-		element = subElement.findElement(By.cssSelector("div.conditions"));
-		ConditionData condiitonData = parseCondition(element);
+		WebElement conditionsElement = subElement.findElement(By.cssSelector("div.conditions"));
+		ConditionData condiitonData = parseCondition(conditionsElement);
 		batterBoxLive.setConditionData(condiitonData);
 		
 		// 投球
-		element = subElement.findElement(By.cssSelector("table#pitchingBallTbl.data-view"));
-		PitchingBallData pitchingBallData = parsePitchingBall(element);
+		WebElement pitchingBallElement = subElement.findElement(By.cssSelector("table#pitchingBallTbl.data-view"));
+		PitchingBallData pitchingBallData = parsePitchingBall(pitchingBallElement);
 		batterBoxLive.setPitchingBallData(pitchingBallData);
 		
+		//--------------------------------------------------------------------------------
 		subElement = baseElement.findElement(By.cssSelector("div.col02"));
+		
+		// 打者
+		WebElement batterElement = subElement.findElement(By.cssSelector("table#batterTbl.data-view"));
+		BatterData batterData = parseBatter(batterElement);
+		batterBoxLive.setBatterData(batterData);
+		
+		// マップ
+		WebElement mapElement = subElement.findElement(By.cssSelector("div"));
+		String attributeId = mapElement.getAttribute("id");
+		String attributeClass = mapElement.getAttribute("class");
+		String attributeIsEventAction = mapElement.getAttribute("iseventaction");
+		System.out.println(String.format("id=%s class=%s iseventaction=%s", attributeId, attributeClass, attributeIsEventAction));
+		
+		
+		//--------------------------------------------------------------------------------
+		subElement = baseElement.findElement(By.cssSelector("div#ball-nav"));
+
+		// ボタン
+		List<WebElement> ballNavElements = subElement.findElements(By.cssSelector("a.btCmnS.hVA"));
+		for(WebElement ballNavElement : ballNavElements) {
+			String click = ballNavElement.getAttribute("sj-click");
+			if(click.equals("controller:nextBall")) {
+				batterBoxLive.setNextBallButton(ballNavElement);
+				break;
+			}
+		}
 		
 		tearDown();
 		
@@ -96,7 +123,7 @@ public class BatterBoxLiveParser {
 			int wins = Integer.parseInt(texts[0]);
 			int losses = Integer.parseInt(texts[1]);
 			int saves = Integer.parseInt(texts[2]);
-			pitcherData.seScore(wins, losses, saves);
+			pitcherData.setScore(wins, losses, saves);
 		} catch(NumberFormatException e) {
 			System.out.println(e.getMessage());
 			return null;
@@ -234,8 +261,41 @@ public class BatterBoxLiveParser {
 	}
 	
 	private BatterData parseBatter(WebElement baseElement) {
-		return null;
 		
+		List<WebElement> elements = baseElement.findElements(By.cssSelector("tr"));
+		
+		// 名前
+		String text = elements.get(0).findElement(By.cssSelector("td")).getText();
+		BatterData batterData = new BatterData(text);
+		
+		// 本日
+		text = elements.get(1).findElement(By.cssSelector("td")).getText();
+		Pattern pattern = Pattern.compile("[^0-9]+");
+		String[] texts = pattern.split(text);
+		try {
+			int atBats = Integer.parseInt(texts[0]);
+			int hits = Integer.parseInt(texts[1]);
+			batterData.setStatsToday(atBats, hits);
+		} catch(NumberFormatException e) {
+			System.out.println(e.getMessage());
+			return null;
+		}
+		
+		// 今季成績
+		text = elements.get(2).findElement(By.cssSelector("td")).getText();
+		pattern = Pattern.compile("[^.0-9]+");
+		texts = pattern.split(text);
+		try {
+			float average = Float.parseFloat(texts[0]);
+			int homeRuns = Integer.parseInt(texts[1]);
+			int runsBattedIn = Integer.parseInt(texts[2]);
+			batterData.setStatsSeason(average, homeRuns, runsBattedIn);
+		} catch(NumberFormatException e) {
+			System.out.println(e.getMessage());
+			return null;
+		}
+		
+		return batterData;
 	}
 	
 	private PitchesMapData parsePitchesMap(WebElement baseElement) {

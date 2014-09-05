@@ -18,7 +18,7 @@ public class PitcherData {
 		this.pitches = pitches;
 	}
 	
-	public void seScore(int wins, int losses, int saves) {
+	public void setScore(int wins, int losses, int saves) {
 		
 		this.wins = wins;
 		this.losses = losses;

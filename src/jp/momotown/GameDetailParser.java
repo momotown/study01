@@ -2,6 +2,7 @@ package jp.momotown;
 
 import java.util.List;
 
+import jp.momotown.data.GameDetailData;
 import jp.momotown.data.batterbox.BatterBoxLiveData;
 import jp.momotown.data.playerlist.PlayerListData;
 import jp.momotown.data.scoreboard.ScoreBoardData;
@@ -17,36 +18,39 @@ public class GameDetailParser {
 	private String baseUrl;
 	
 	public GameDetailParser(String url) {
-		// TODO 自動生成されたコンストラクター・スタブ
+
 		baseUrl = url;
+		webDriver = new FirefoxDriver();
+		webDriver.get(baseUrl);
 	}
 	
 	private void setUp() {
-		webDriver = new FirefoxDriver();
+		
 	}
 
-	public void parse() {
+	public GameDetailData parse() {
 
 		setUp();
 		
-		webDriver.get(baseUrl);
+		GameDetailData gameDetailData = new GameDetailData();
 		
 		// スコアボード
 		WebElement element = webDriver.findElement(By.cssSelector("div.scoreboardArea"));
 		ScoreBoardParser scoreBoardParser = new ScoreBoardParser(element);
 		ScoreBoardData scoreBoardData = scoreBoardParser.parse();
-		scoreBoardData.display();
+		gameDetailData.setScoreBoardData(scoreBoardData);
 		
 		// プレイヤーリスト
 		element = webDriver.findElement(By.cssSelector("div#playerListIndex"));
 		PlayerListParser playerListParser = new PlayerListParser(element);
 		PlayerListData playerListData = playerListParser.parse();
-		playerListData.display();
+		gameDetailData.setPlayerListData(playerListData);
 		
+		// Live
 		element = webDriver.findElement(By.cssSelector("div#batterBoxLive"));
 		BatterBoxLiveParser batterBoxLiveParser = new BatterBoxLiveParser(element);
 		BatterBoxLiveData batterBoxLiveData = batterBoxLiveParser.parse();
-		batterBoxLiveData.display();
+		gameDetailData.setBatterBoxLiveData(batterBoxLiveData);
 		
 //		WebElement battingOrderBlock = webDriver.findElement(By.xpath("//div[@id='playerListIndex']"));
 //		System.out.println(battingOrderBlock.getText());
@@ -56,6 +60,8 @@ public class GameDetailParser {
 //		}
 		
 		tearDown();
+		
+		return gameDetailData;
 	}
 
 	private void tearDown() {
